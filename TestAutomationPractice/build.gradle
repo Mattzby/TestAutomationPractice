@@ -31,10 +31,23 @@ dependencies {
 	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.9.0'
 	
 	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server
-	compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.9.0'	
+	//compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.9.0'	
 	
 	// https://mvnrepository.com/artifact/org.testng/testng
 	testCompile group: 'org.testng', name: 'testng', version: '6.14.2'
 	
+}
+
+//Sample task that will be recorded in the gradle tasks call.  Calling this task will print out Hello World!
+task hello {
+	doLast{
+    	println 'Hello World!'
+	}
+}
+
+test {
+    useTestNG() {
+    	//suites 'src/main/resources/testng.xml'
+    }
 }
 
