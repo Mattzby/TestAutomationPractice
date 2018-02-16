@@ -3,8 +3,13 @@
 <suite name="Trello Suite">
 	<test name="Log In Test">
 		<classes>
-			<class name="com.mattzby.trello.ValidLogIn" />
-			<class name="com.mattzby.trello.InvalidLogIn" />		
+			<class name="com.mattzby.trello.ValidLogInTest" />
+			<class name="com.mattzby.trello.InvalidLogInTest" />		
 		</classes>
 	</test>
+	<test name="Create Board Test">
+		<classes>
+			<class name="com.mattzby.trello.CreateBoardTest" />		
+		</classes>
+	</test>	
 </suite>

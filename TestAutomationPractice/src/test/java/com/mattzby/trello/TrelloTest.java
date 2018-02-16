@@ -12,6 +12,7 @@ public abstract class TrelloTest {
 	WebDriver driver;
 	WebDriverWait wait;
 	
+	//TODO: pass browser in as parameter, add logic to handle Firefox/Chrome/IE
 	protected void invokeBrowser(){
 		try {
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Matt\\Desktop\\Selenium\\chromedriver_win32\\chromedriver.exe");
@@ -28,15 +29,16 @@ public abstract class TrelloTest {
 		}
 	}
 	
-	protected void logInToTrello(){
+	protected void logInToTrello(String userName, String password){
 		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Log In"))).click();
-		//TODO: Remove login credentials and store in separate file		
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("user"))).sendKeys("mctesterson1");
-		driver.findElement(By.id("password")).sendKeys("wordpass123");   
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("user"))).sendKeys(userName);
+		driver.findElement(By.id("password")).sendKeys(password);   
 		driver.findElement(By.id("login")).click();
 	}
 	
-	protected void logOutFromTrello(){		
+	protected void logOutFromTrello(){	
+		//I shouldn't have to navigate to Trello.com to log out?
+		driver.get("http://www.trello.com");
 		wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//a[@class='header-btn header-avatar js-open-header-member-menu']/span[@class='member']/span[@class='member-initials']"))).click();				
 		driver.findElement(By.xpath("//ul[@class='pop-over-list'][3]/li/a[@class='js-logout']")).click();
@@ -45,13 +47,6 @@ public abstract class TrelloTest {
 	protected void closeBrowser(){
 		driver.quit();
 	}	
-	
-	/*public static void main(String[] args) {
-		TrelloTest trelloTest = new TrelloTest();
-		trelloTest.invokeBrowser();
-		trelloTest.logInToTrello();
-		trelloTest.logOutOfTrello();
-	}*/
 	
 }
 

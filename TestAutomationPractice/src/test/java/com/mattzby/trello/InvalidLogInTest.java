@@ -9,22 +9,17 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class InvalidLogIn extends TrelloTest {
+public class InvalidLogInTest extends TrelloTest {
 	
 	@BeforeClass
 	public void setUpBeforeTestClass(){
 		super.invokeBrowser();
-		driver.findElement(By.linkText("Log In")).click();
 	}
 	
 	@Test
-	public void invalidUsernameTest(){		
-		driver.findElement(By.id("user")).clear();
-		driver.findElement(By.id("password")).clear();		
-		
-		driver.findElement(By.id("user")).sendKeys("mctesterson123");
-		driver.findElement(By.id("password")).sendKeys("wordpass");   
-		driver.findElement(By.id("login")).click();		
+	public void invalidUsernameTest(){
+		driver.get("http://www.trello.com");	
+		super.logInToTrello("mctesterson123", "wordpass");
 		
 		//Check for username error message
 		try{
@@ -38,12 +33,8 @@ public class InvalidLogIn extends TrelloTest {
 	
 	@Test
 	public void invalidPasswordTest(){
-		driver.findElement(By.id("user")).clear();
-		driver.findElement(By.id("password")).clear();
-		
-		driver.findElement(By.id("user")).sendKeys("mattzby");
-		driver.findElement(By.id("password")).sendKeys("wordpass");
-		driver.findElement(By.id("login")).click();		
+		driver.get("http://www.trello.com");			
+		super.logInToTrello("mattzby", "wordpass");
 		
 		//Check for password error message displayed		
 		try{

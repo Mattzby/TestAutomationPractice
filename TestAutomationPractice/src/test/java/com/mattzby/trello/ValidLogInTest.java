@@ -9,14 +9,15 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class ValidLogIn extends TrelloTest {	
+public class ValidLogInTest extends TrelloTest {	
 	
 	boolean loginSuccessful = false;
 	
 	@BeforeClass
 	public void setUpBeforeTestClass(){
 		super.invokeBrowser();
-		super.logInToTrello();		
+		//TODO: Remove login credentials and store in separate file		
+		super.logInToTrello("mctesterson1","wordpass123");		
 	}
 	
 	@Test
