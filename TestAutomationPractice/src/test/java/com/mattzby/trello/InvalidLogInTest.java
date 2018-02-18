@@ -18,7 +18,7 @@ public class InvalidLogInTest extends TrelloTest {
 	
 	@Test
 	public void invalidUsernameTest(){
-		driver.get("http://www.trello.com");	
+		driver.get(TRELLO_URL);	
 		super.logInToTrello("mctesterson123", "wordpass");
 		
 		//Check for username error message
@@ -33,7 +33,7 @@ public class InvalidLogInTest extends TrelloTest {
 	
 	@Test
 	public void invalidPasswordTest(){
-		driver.get("http://www.trello.com");			
+		driver.get(TRELLO_URL);			
 		super.logInToTrello("mattzby", "wordpass");
 		
 		//Check for password error message displayed		
@@ -46,7 +46,7 @@ public class InvalidLogInTest extends TrelloTest {
 		}	
 	}
 	
-	//TODO: Create test for too many incorrect login attempts - using @Test(invocationCount = 10)
+	//TODO: Create test for too many incorrect login attempts - using @Test(invocationCount = 5)
 
 	@AfterClass 
 	public void tearDownAfterTestClass(){
