@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Trello Suite">
-	<test name="Log In Test">
-		<classes>
-			<class name="com.mattzby.trello.ValidLogInTest" />
-			<class name="com.mattzby.trello.InvalidLogInTest" />		
-		</classes>
-	</test>
-	<test name="Create Board Test">
-		<classes>
-			<class name="com.mattzby.trello.CreateBoardTest" />		
-		</classes>
-	</test>	
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Master Trello Suite" verbose="1" >
+    <suite-files>
+        <suite-file path="TrelloSuiteChrome.xml"/>
+        <suite-file path="TrelloSuiteFirefox.xml"/>
+        <!-- <suite-file path="TrelloSuiteIE.xml"/> -->
+    </suite-files>
 </suite>

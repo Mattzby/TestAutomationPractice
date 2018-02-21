@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Internet Explorer 11 Trello Suite">
+	<parameter name="browser" value="ie"/>
+	<test name="Log In Test">
+		<classes>
+			<class name="com.mattzby.trello.ValidLogInTest" />
+			<class name="com.mattzby.trello.InvalidLogInTest" />		
+		</classes>
+	</test>
+	<test name="Create Board Test">
+		<classes>
+			<class name="com.mattzby.trello.CreateBoardTest" />		
+		</classes>
+	</test>	
+</suite>

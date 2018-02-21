@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,12 +15,30 @@ public abstract class TrelloTest {
 	WebDriverWait wait;
 	
 	protected static final String TRELLO_URL = "https://trello.com";
+	String driverPath = "src/resources/drivers/";
 	
-	//TODO: pass browser in as parameter, add logic to handle Firefox/Chrome/IE
-	protected void invokeBrowser(){
-		try {
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Matt\\Desktop\\Selenium\\chromedriver_win32\\chromedriver.exe");
+	//TODO: investigate how to not include .exes directly in project, but extract them from JARs that are pulled in by Gradle
+	protected void invokeBrowser(String browser){
+		
+		//set up driver based on browser parameter
+		switch (browser) {
+		case "chrome":
+			System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
 			driver = new ChromeDriver();
+			break;
+		case "firefox":
+			System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver.exe");
+			driver = new FirefoxDriver();
+			break;
+		case "ie":
+			System.setProperty("webdriver.ie.driver", driverPath + "IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
+			break;
+		default:
+			throw new IllegalArgumentException("Invalid browser requested for WebDriver - " + browser);		
+		}
+		
+		try {
 			wait = new WebDriverWait(driver, 10);
 			driver.manage().deleteAllCookies();
 			//driver.manage().window().maximize();		

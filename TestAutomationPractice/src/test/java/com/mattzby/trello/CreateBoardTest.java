@@ -5,15 +5,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class CreateBoardTest extends TrelloBoardTest {
 
 	String dropdownBoardUrl, tileBoardUrl;
 	
+	@Parameters({"browser"})
 	@BeforeClass
-	public void setUpBeforeTestClass(){
-		super.invokeBrowser();
+	public void setUpBeforeTestClass(String browser){
+		super.invokeBrowser(browser);
 		//TODO: Remove login credentials and store in separate file		
 		super.logInToTrello("mctesterson1","wordpass123");
 	}
